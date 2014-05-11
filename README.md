@@ -3,13 +3,13 @@
 Super convenient group count
 
 ```ruby
-Visit.top(:search_keyword)
+Visit.top(:browser)
 ```
 
 instead of
 
 ```ruby
-Visit.group(:search_keyword).where("search_keyword IS NOT NULL").order("count_all DESC, search_keyword").count
+Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browser").count
 ```
 
 Limit the results
