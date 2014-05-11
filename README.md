@@ -3,13 +3,13 @@
 Super convenient group count
 
 ```ruby
-User.top(:gender)
+Visit.top(:search_keyword)
 ```
 
 instead of
 
 ```ruby
-User.group(:gender).where("gender IS NOT NULL").order("count_all DESC, gender").count
+Visit.group(:search_keyword).where("search_keyword IS NOT NULL").order("count_all DESC, search_keyword").count
 ```
 
 Limit the results
