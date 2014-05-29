@@ -15,7 +15,7 @@ Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browse
 Limit the results
 
 ```ruby
-Visit.limit(10).top(:referring_domain)
+Visit.top(:referring_domain, 10)
 ```
 
 ## Installation
