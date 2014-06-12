@@ -52,6 +52,10 @@ And then execute:
 bundle
 ```
 
+## History
+
+View the [changelog](https://github.com/ankane/hightop/blob/master/CHANGELOG.md)
+
 ## Contributing
 
 Everyone is encouraged to help improve this project. Here are a few ways you can help:
