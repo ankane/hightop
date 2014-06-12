@@ -32,6 +32,12 @@ Works with multiple groups
 Visit.top([:city, :browser])
 ```
 
+And expressions
+
+```ruby
+Visit.top("LOWER(referring_domain)")
+```
+
 ## Installation
 
 Add this line to your application’s Gemfile:
