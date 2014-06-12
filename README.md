@@ -18,6 +18,8 @@ Limit the results
 Visit.top(:referring_domain, 10)
 ```
 
+Be sure to [sanitize user input](http://rails-sqli.org/) like you must with `group`.
+
 ## Installation
 
 Add this line to your application’s Gemfile:
