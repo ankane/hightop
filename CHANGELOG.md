@@ -1,3 +1,7 @@
+## 0.1.0
+
+- No changes, just bump
+
 ## 0.0.4
 
 - Added support for multiple groups
@@ -10,3 +14,7 @@
 ## 0.0.2
 
 - Added `limit` parameter
+
+## 0.0.1
+
+- First release
