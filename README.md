@@ -12,13 +12,25 @@ instead of
 Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browser").count
 ```
 
+Be sure to [sanitize user input](http://rails-sqli.org/) like you must with `group`.
+
 Limit the results
 
 ```ruby
 Visit.top(:referring_domain, 10)
 ```
 
-Be sure to [sanitize user input](http://rails-sqli.org/) like you must with `group`.
+Include nil values
+
+```ruby
+Visit.top(:referring_domain, nil: true)
+```
+
+Works with multiple groups
+
+```ruby
+Visit.top([:city, :referring_domain])
+```
 
 ## Installation
 
