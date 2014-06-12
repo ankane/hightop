@@ -23,13 +23,13 @@ Visit.top(:referring_domain, 10)
 Include nil values
 
 ```ruby
-Visit.top(:referring_domain, nil: true)
+Visit.top(:search_keyword, nil: true)
 ```
 
 Works with multiple groups
 
 ```ruby
-Visit.top([:city, :referring_domain])
+Visit.top([:city, :browser])
 ```
 
 ## Installation
