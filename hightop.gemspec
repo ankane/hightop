@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Hightop::VERSION
   spec.authors       = ["Andrew Kane"]
   spec.email         = ["andrew@chartkick.com"]
-  spec.summary       = %q{Super convenient group count}
-  spec.description   = %q{Super convenient group count}
+  spec.summary       = %q{A nice shortcut for group count queries}
+  spec.description   = %q{A nice shortcut for group count queries}
   spec.homepage      = "https://github.com/ankane/hightop"
   spec.license       = "MIT"
 

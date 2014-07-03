@@ -1,6 +1,6 @@
 # Hightop
 
-Super convenient group count
+A nice shortcut for group count queries
 
 ```ruby
 Visit.top(:browser)
