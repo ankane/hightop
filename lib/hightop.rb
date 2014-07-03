@@ -9,9 +9,8 @@ module Hightop
       limit = nil
     end
 
-    relation = group(column)
     order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
-    relation = relation.order("count_#{options[:uniq] || "all"} DESC, #{order_str}")
+    relation = group(column).order("count_#{options[:uniq] || "all"} DESC, #{order_str}")
     if limit
       relation = relation.limit(limit)
     end
