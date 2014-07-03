@@ -38,7 +38,7 @@ And expressions
 Visit.top("LOWER(referring_domain)")
 ```
 
-And distinct counts
+And distinct
 
 ```ruby
 Visit.top(:city, uniq: :user_id)
