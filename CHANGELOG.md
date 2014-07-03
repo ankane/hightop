@@ -1,3 +1,7 @@
+## 0.1.1 [unreleased]
+
+- Fixed `Model.limit(n).top`
+
 ## 0.1.0
 
 - No changes, just bump
