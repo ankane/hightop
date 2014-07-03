@@ -10,7 +10,10 @@ module Hightop
     end
 
     order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
-    relation = group(column).limit(limit).order("count_all DESC, #{order_str}")
+    relation = group(column).order("count_all DESC, #{order_str}")
+    if limit
+      relation = relation.limit(limit)
+    end
 
     unless options[:nil]
       (column.is_a?(Array) ? column : [column]).each do |c|
