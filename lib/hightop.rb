@@ -1,4 +1,5 @@
 require "hightop/version"
+require "active_record"
 
 module Hightop
 
