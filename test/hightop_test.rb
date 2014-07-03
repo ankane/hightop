@@ -7,8 +7,8 @@ class TestHightop < Minitest::Test
   end
 
   def test_top
-    create("San Francisco", 3)
-    create("Chicago", 2)
+    create_city("San Francisco", 3)
+    create_city("Chicago", 2)
     expected = {
       "San Francisco" => 3,
       "Chicago" => 2
@@ -17,9 +17,9 @@ class TestHightop < Minitest::Test
   end
 
   def test_limit
-    create("San Francisco", 3)
-    create("Chicago", 2)
-    create("Boston", 1)
+    create_city("San Francisco", 3)
+    create_city("Chicago", 2)
+    create_city("Boston", 1)
     expected = {
       "San Francisco" => 3,
       "Chicago" => 2
@@ -29,8 +29,8 @@ class TestHightop < Minitest::Test
   end
 
   def test_nil_values
-    create("San Francisco", 3)
-    create(nil, 2)
+    create_city("San Francisco", 3)
+    create_city(nil, 2)
     expected = {
       "San Francisco" => 3,
     }
@@ -38,8 +38,8 @@ class TestHightop < Minitest::Test
   end
 
   def test_nil_option
-    create("San Francisco", 3)
-    create(nil, 2)
+    create_city("San Francisco", 3)
+    create_city(nil, 2)
     expected = {
       "San Francisco" => 3,
       nil => 2
@@ -47,7 +47,23 @@ class TestHightop < Minitest::Test
     assert_equal expected, Visit.top(:city, nil: true)
   end
 
-  def create(city, count = 1)
+  def test_multiple_groups
+    create_city("San Francisco")
+    expected = {
+      ["San Francisco", "San Francisco"] => 1
+    }
+    assert_equal expected, Visit.top([:city, :city])
+  end
+
+  def test_expressions
+    create_city("San Francisco")
+    expected = {
+      "san francisco" => 1
+    }
+    assert_equal expected, Visit.top("LOWER(city)")
+  end
+
+  def create_city(city, count = 1)
     count.times{ Visit.create!(city: city) }
   end
 
