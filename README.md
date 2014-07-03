@@ -38,6 +38,12 @@ And expressions
 Visit.top("LOWER(referring_domain)")
 ```
 
+And distinct counts
+
+```ruby
+Visit.top(:city, uniq: :user_id)
+```
+
 ## Installation
 
 Add this line to your application’s Gemfile:

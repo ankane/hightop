@@ -63,8 +63,21 @@ class TestHightop < Minitest::Test
     assert_equal expected, Visit.top("LOWER(city)")
   end
 
+  def test_uniq
+    create({city: "San Francisco", user_id: 1})
+    create({city: "San Francisco", user_id: 1})
+    expected = {
+      "San Francisco" => 1
+    }
+    assert_equal expected, Visit.top(:city, uniq: :user_id)
+  end
+
   def create_city(city, count = 1)
-    count.times{ Visit.create!(city: city) }
+    create({city: city}, count)
+  end
+
+  def create(attributes, count = 1)
+    count.times{ Visit.create!(attributes) }
   end
 
 end
