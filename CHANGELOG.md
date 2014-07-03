@@ -1,4 +1,4 @@
-## 0.1.1 [unreleased]
+## 0.1.1
 
 - Added `uniq` option
 - Fixed `Model.limit(n).top`
