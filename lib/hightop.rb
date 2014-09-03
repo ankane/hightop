@@ -21,6 +21,10 @@ module Hightop
       end
     end
 
+    if options[:min]
+      relation = relation.having("COUNT(*) >= #{options[:min].to_i}")
+    end
+
     if options[:uniq]
       relation.uniq.count(options[:uniq])
     else

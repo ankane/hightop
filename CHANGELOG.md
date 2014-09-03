@@ -1,3 +1,7 @@
+## 0.1.2 [unreleased]
+
+- Added `min` option
+
 ## 0.1.1
 
 - Added `uniq` option
