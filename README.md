@@ -44,6 +44,12 @@ And distinct
 Visit.top(:city, uniq: :user_id)
 ```
 
+And min count [master]
+
+```ruby
+Visit.top(:city, min: 10)
+```
+
 ## Installation
 
 Add this line to your application’s Gemfile:
