@@ -9,7 +9,19 @@ module Hightop
       limit = nil
     end
 
-    order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
+    unless column.is_a? Array
+      column = [column]
+    end
+
+    # put table name in front of attributes,
+    # this prevents AR mangling of column names
+    # where event_id sometimes became event_id_id
+    column = column.map { |col|
+      "#{table_name}.#{col}"
+    }
+
+    order_str = column.join(", ")
+
     relation = group(column).order("count_#{options[:uniq] || "all"} DESC, #{order_str}")
     if limit
       relation = relation.limit(limit)
