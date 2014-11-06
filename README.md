@@ -44,7 +44,7 @@ And distinct
 Visit.top(:city, uniq: :user_id)
 ```
 
-And min count [master]
+And min count
 
 ```ruby
 Visit.top(:city, min: 10)
