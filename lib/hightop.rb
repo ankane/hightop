@@ -22,7 +22,7 @@ module Hightop
     end
 
     if options[:min]
-      relation = relation.having("COUNT(*) >= #{options[:min].to_i}")
+      relation = relation.having("COUNT(#{options[:uniq] ? "DISTINCT #{options[:uniq]}" : "*"}) >= #{options[:min].to_i}")
     end
 
     if options[:uniq]
