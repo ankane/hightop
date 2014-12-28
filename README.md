@@ -2,6 +2,8 @@
 
 A nice shortcut for group count queries
 
+[![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
+
 ```ruby
 Visit.top(:browser)
 ```
