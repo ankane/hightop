@@ -1,7 +1,6 @@
 require_relative "test_helper"
 
 class TestHightop < Minitest::Test
-
   def setup
     Visit.delete_all
   end
@@ -32,7 +31,7 @@ class TestHightop < Minitest::Test
     create_city("San Francisco", 3)
     create_city(nil, 2)
     expected = {
-      "San Francisco" => 3,
+      "San Francisco" => 3
     }
     assert_equal expected, Visit.top(:city)
   end
@@ -64,8 +63,8 @@ class TestHightop < Minitest::Test
   end
 
   def test_uniq
-    create({city: "San Francisco", user_id: 1})
-    create({city: "San Francisco", user_id: 1})
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
     expected = {
       "San Francisco" => 1
     }
@@ -86,7 +85,6 @@ class TestHightop < Minitest::Test
   end
 
   def create(attributes, count = 1)
-    count.times{ Visit.create!(attributes) }
+    count.times { Visit.create!(attributes) }
   end
-
 end

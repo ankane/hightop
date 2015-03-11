@@ -2,7 +2,6 @@ require "hightop/version"
 require "active_record"
 
 module Hightop
-
   def top(column, limit = nil, options = {})
     if limit.is_a?(Hash)
       options = limit
@@ -10,7 +9,7 @@ module Hightop
     end
 
     order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
-    relation = group(column).order("count_#{options[:uniq] || "all"} DESC, #{order_str}")
+    relation = group(column).order("count_#{options[:uniq] || 'all'} DESC, #{order_str}")
     if limit
       relation = relation.limit(limit)
     end
@@ -22,7 +21,7 @@ module Hightop
     end
 
     if options[:min]
-      relation = relation.having("COUNT(#{options[:uniq] ? "DISTINCT #{options[:uniq]}" : "*"}) >= #{options[:min].to_i}")
+      relation = relation.having("COUNT(#{options[:uniq] ? "DISTINCT #{options[:uniq]}" : '*'}) >= #{options[:min].to_i}")
     end
 
     if options[:uniq]
@@ -31,7 +30,6 @@ module Hightop
       relation.count
     end
   end
-
 end
 
 ActiveRecord::Base.send :extend, Hightop
