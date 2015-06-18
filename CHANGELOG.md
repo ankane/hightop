@@ -1,4 +1,8 @@
-## 0.1.2 [unreleased]
+## 0.1.3
+
+- Fixed `min` option with `uniq`
+
+## 0.1.2
 
 - Added `min` option
 
