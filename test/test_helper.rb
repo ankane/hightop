@@ -4,6 +4,8 @@ require "minitest/autorun"
 require "minitest/pride"
 require "logger"
 
+Minitest::Test = Minitest::Unit::TestCase unless defined?(Minitest::Test)
+
 # for debugging
 # ActiveRecord::Base.logger = Logger.new(STDOUT)
 

@@ -25,10 +25,13 @@ module Hightop
       relation = relation.having("COUNT(#{distinct ? "DISTINCT #{distinct}" : '*'}) >= #{options[:min].to_i}")
     end
 
-    if options[:distinct]
-      relation.distinct.count(options[:distinct])
-    elsif options[:uniq]
-      relation.uniq.count(options[:uniq])
+    if distinct
+      # since relation.respond_to?(:distinct) can't be used
+      if ActiveRecord::VERSION::MAJOR > 3
+        relation.distinct.count(distinct)
+      else
+        relation.uniq.count(distinct)
+      end
     else
       relation.count
     end
