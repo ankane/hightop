@@ -3,6 +3,8 @@ rvm:
   - 2.1
 gemfile:
   - Gemfile
+sudo: false
+before_install: gem install bundler
 script: bundle exec rake test
 notifications:
   email:
