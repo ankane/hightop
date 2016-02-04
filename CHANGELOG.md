@@ -1,3 +1,7 @@
+## 0.1.4 [unreleased]
+
+- Added `distinct` option to replace `uniq`
+
 ## 0.1.3
 
 - Fixed `min` option with `uniq`

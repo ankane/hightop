@@ -8,8 +8,9 @@ module Hightop
       limit = nil
     end
 
+    distinct = options[:distinct] || options[:uniq]
     order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
-    relation = group(column).order("count_#{options[:uniq] || 'all'} DESC, #{order_str}")
+    relation = group(column).order("count_#{distinct || 'all'} DESC, #{order_str}")
     if limit
       relation = relation.limit(limit)
     end
@@ -21,10 +22,12 @@ module Hightop
     end
 
     if options[:min]
-      relation = relation.having("COUNT(#{options[:uniq] ? "DISTINCT #{options[:uniq]}" : '*'}) >= #{options[:min].to_i}")
+      relation = relation.having("COUNT(#{distinct ? "DISTINCT #{distinct}" : '*'}) >= #{options[:min].to_i}")
     end
 
-    if options[:uniq]
+    if options[:distinct]
+      relation.distinct.count(options[:distinct])
+    elsif options[:uniq]
       relation.uniq.count(options[:uniq])
     else
       relation.count

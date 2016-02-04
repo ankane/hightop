@@ -43,7 +43,7 @@ Visit.top("LOWER(referring_domain)")
 And distinct
 
 ```ruby
-Visit.top(:city, uniq: :user_id)
+Visit.top(:city, distinct: :user_id)
 ```
 
 And min count

@@ -62,6 +62,15 @@ class TestHightop < Minitest::Test
     assert_equal expected, Visit.top("LOWER(city)")
   end
 
+  def test_distinct
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
+    expected = {
+      "San Francisco" => 1
+    }
+    assert_equal expected, Visit.top(:city, distinct: :user_id)
+  end
+
   def test_uniq
     create(city: "San Francisco", user_id: 1)
     create(city: "San Francisco", user_id: 1)
@@ -78,6 +87,18 @@ class TestHightop < Minitest::Test
       "San Francisco" => 3
     }
     assert_equal expected, Visit.top(:city, min: 3)
+  end
+
+  def test_min_distinct
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 2)
+    create(city: "Chicago", user_id: 1)
+    create(city: "Chicago", user_id: 1)
+    expected = {
+      "San Francisco" => 2
+    }
+    assert_equal expected, Visit.top(:city, min: 2, distinct: :user_id)
   end
 
   def create_city(city, count = 1)
