@@ -101,6 +101,12 @@ class TestHightop < Minitest::Test
     assert_equal expected, Visit.top(:city, min: 2, distinct: :user_id)
   end
 
+  def test_bad_argument
+    assert_raises(ArgumentError) do
+      Visit.top(:city, boom: true)
+    end
+  end
+
   def create_city(city, count = 1)
     create({city: city}, count)
   end

@@ -1,3 +1,7 @@
+## 0.2.0 [unreleased]
+
+- Use keyword arguments
+
 ## 0.1.4
 
 - Added `distinct` option to replace `uniq`
