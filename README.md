@@ -2,8 +2,6 @@
 
 A nice shortcut for group count queries
 
-[![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
-
 ```ruby
 Visit.top(:browser)
 ```
@@ -15,6 +13,10 @@ Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browse
 ```
 
 Be sure to [sanitize user input](http://rails-sqli.org/) like you must with `group`.
+
+[![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
+
+## Options
 
 Limit the results
 
