@@ -6,6 +6,7 @@ sudo: false
 before_install: gem install bundler
 script: bundle exec rake test
 env:
+  - AR_VERSION=5.2.0
   - AR_VERSION=5.1.0
   - AR_VERSION=5.0.0
   - AR_VERSION=4.2.0
