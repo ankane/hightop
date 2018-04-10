@@ -39,7 +39,7 @@ Visit.top([:city, :browser])
 And expressions
 
 ```ruby
-Visit.top("LOWER(referring_domain)")
+Visit.top(Arel.sql("LOWER(referring_domain)"))
 ```
 
 And distinct

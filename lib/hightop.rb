@@ -6,7 +6,7 @@ module Hightop
     def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
       distinct ||= uniq
       order_str = column.is_a?(Array) ? column.map(&:to_s).join(", ") : column
-      relation = group(column).order("count_#{distinct || 'all'} DESC, #{order_str}")
+      relation = group(column).order(["count_#{distinct || 'all'} DESC", order_str])
       if limit
         relation = relation.limit(limit)
       end

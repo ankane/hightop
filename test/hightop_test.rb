@@ -59,7 +59,7 @@ class TestHightop < Minitest::Test
     expected = {
       "san francisco" => 1
     }
-    assert_equal expected, Visit.top("LOWER(city)")
+    assert_equal expected, Visit.top(Arel.sql("LOWER(city)"))
   end
 
   def test_distinct
