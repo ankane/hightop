@@ -16,6 +16,14 @@ Be sure to [sanitize user input](https://rails-sqli.org/) like you must with `gr
 
 [![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
 
+## Installation
+
+Add this line to your application’s Gemfile:
+
+```ruby
+gem 'hightop'
+```
+
 ## Options
 
 Limit the results
@@ -52,20 +60,6 @@ And min count
 
 ```ruby
 Visit.top(:city, min: 10)
-```
-
-## Installation
-
-Add this line to your application’s Gemfile:
-
-```ruby
-gem 'hightop'
-```
-
-And then execute:
-
-```sh
-bundle
 ```
 
 ## History
