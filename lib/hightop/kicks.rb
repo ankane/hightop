@@ -20,12 +20,7 @@ module Hightop
       end
 
       if distinct
-        # since relation.respond_to?(:distinct) can't be used
-        if ActiveRecord::VERSION::MAJOR > 3
-          relation.distinct.count(distinct)
-        else
-          relation.uniq.count(distinct)
-        end
+        relation.distinct.count(distinct)
       else
         relation.count
       end
