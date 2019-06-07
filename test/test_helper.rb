@@ -5,8 +5,6 @@ require "minitest/pride"
 require "logger"
 require "active_record"
 
-Minitest::Test = Minitest::Unit::TestCase unless defined?(Minitest::Test)
-
 # for debugging
 ActiveRecord::Base.logger = ActiveSupport::Logger.new(STDOUT) if ENV["VERBOSE"]
 
