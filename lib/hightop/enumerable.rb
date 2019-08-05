@@ -10,10 +10,10 @@ module Enumerable
       min = options[:min]
 
       # could be more performant
-      arr = map(&block).group_by { |v| v }.map { |k, v| [k, v.size] }.sort_by { |k, v| [-v, k] }
-      arr = arr.reject { |k, v| k.nil? } unless options[:nil]
+      arr = map(&block).group_by { |v| v }.map { |k, v| [k, v.size] }.sort_by { |_, v| -v }
+      arr = arr.reject { |k, _| k.nil? } unless options[:nil]
       arr = arr[0...limit] if limit
-      arr = arr.select { |k, v| v >= min } if min
+      arr = arr.select { |_, v| v >= min } if min
       Hash[arr]
     else
       scoping { @klass.send(:top, *args, &block) }
