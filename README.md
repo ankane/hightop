@@ -62,6 +62,38 @@ And min count
 Visit.top(:city, min: 10)
 ```
 
+## Arrays and Hashes [master]
+
+To use Hightop on arrays and hashes, require:
+
+```ruby
+require "hightop/enumerable"
+```
+
+Arrays
+
+```ruby
+["up", "up", "down"].top
+```
+
+Hashes
+
+```ruby
+{a: "up", b: "up", c: "down"}.top { |k, v| v }
+```
+
+Limit the results
+
+```ruby
+["up", "up", "down"].top(1)
+```
+
+Min count
+
+```ruby
+["up", "up", "down"].top(min: 2)
+```
+
 ## History
 
 View the [changelog](https://github.com/ankane/hightop/blob/master/CHANGELOG.md)

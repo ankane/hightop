@@ -1,3 +1,7 @@
+## 0.2.1 [unreleased]
+
+- Added support for arrays and hashes
+
 ## 0.2.0
 
 - Use keyword arguments
