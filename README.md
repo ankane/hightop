@@ -12,7 +12,13 @@ instead of
 Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browser").count
 ```
 
-Be sure to [sanitize user input](https://rails-sqli.org/) like you must with `group`.
+Be sure to [sanitize user input](https://rails-sqli.org/) like you must with `group`
+
+Also works with arrays and hashes
+
+```ruby
+["up", "up", "down"].top(1)
+```
 
 [![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
 
