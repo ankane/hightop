@@ -101,6 +101,16 @@ class HightopTest < Minitest::Test
     assert_equal expected, Visit.top(:city, min: 2, distinct: :user_id)
   end
 
+  def test_relation_block
+    create_city("San Francisco", 3)
+    create_city("Chicago", 2)
+    expected = {
+      "San Francisco" => 3,
+      "Chicago" => 2
+    }
+    assert_equal expected, Visit.all.top { |v| v.city }
+  end
+
   def test_bad_argument
     assert_raises(ArgumentError) do
       Visit.top(:city, boom: true)
