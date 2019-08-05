@@ -102,6 +102,8 @@ class HightopTest < Minitest::Test
   end
 
   def test_relation_block
+    skip if ActiveRecord::VERSION::MAJOR < 5
+
     create_city("San Francisco", 3)
     create_city("Chicago", 2)
     expected = {
