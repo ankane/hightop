@@ -82,6 +82,12 @@ Limit the results
 ["up", "up", "down"].top(1)
 ```
 
+Include nil values
+
+```ruby
+[nil, nil, "down"].top(nil: true)
+```
+
 Min count
 
 ```ruby

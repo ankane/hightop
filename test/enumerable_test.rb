@@ -34,6 +34,25 @@ class EnumerableTest < Minitest::Test
     assert_equal expected, top
   end
 
+  def test_nil_values
+    top = [:a, nil, nil].top
+    expected = {
+      a: 1
+    }
+    assert_equal expected, top
+    assert_equal top.keys, expected.keys
+  end
+
+  def test_nil_option
+    top = [:a, nil, nil].top(nil: true)
+    expected = {
+      nil => 2,
+      a: 1
+    }
+    assert_equal expected, top
+    assert_equal top.keys, expected.keys
+  end
+
   def test_multiple_groups
     top = [:a, :b, :b].top { |v| [v, :z] }
     expected = {
