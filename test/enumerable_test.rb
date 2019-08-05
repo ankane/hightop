@@ -34,6 +34,20 @@ class EnumerableTest < Minitest::Test
     assert_equal expected, top
   end
 
+  def test_limit_order
+    top = [:b, :c].top(1)
+    expected = {
+      b: 1
+    }
+    assert_equal expected, top
+
+    top = [:c, :b].top(1)
+    expected = {
+      c: 1
+    }
+    assert_equal expected, top
+  end
+
   def test_nil_values
     top = [:a, nil, nil].top
     expected = {
