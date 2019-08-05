@@ -68,7 +68,7 @@ And min count
 Visit.top(:city, min: 10)
 ```
 
-## Arrays and Hashes [master]
+## Arrays and Hashes
 
 Arrays
 
