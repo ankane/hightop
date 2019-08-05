@@ -64,12 +64,6 @@ Visit.top(:city, min: 10)
 
 ## Arrays and Hashes [master]
 
-To use Hightop on arrays and hashes, require:
-
-```ruby
-require "hightop/enumerable"
-```
-
 Arrays
 
 ```ruby

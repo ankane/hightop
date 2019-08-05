@@ -2,6 +2,7 @@
 require "active_support"
 
 # modules
+require "hightop/enumerable"
 require "hightop/kicks"
 require "hightop/version"
 
