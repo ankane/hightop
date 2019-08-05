@@ -109,6 +109,9 @@ class HightopTest < Minitest::Test
       "Chicago" => 2
     }
     assert_equal expected, Visit.all.top { |v| v.city }
+
+    # TODO maybe support
+    # assert_equal expected, Visit.top { |v| v.city }
   end
 
   def test_bad_argument
