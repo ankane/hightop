@@ -9,11 +9,15 @@ module Enumerable
       options ||= {}
       min = options[:min]
 
-      # could be more performant
-      arr = map(&block).group_by { |v| v }.map { |k, v| [k, v.size] }.sort_by { |_, v| -v }
-      arr = arr.reject { |k, _| k.nil? } unless options[:nil]
+      counts = Hash.new(0)
+      map(&block).each do |v|
+        counts[v] += 1
+      end
+      counts.delete(nil) unless options[:nil]
+      counts.select! { |_, v| v >= min } if min
+
+      arr = counts.sort_by { |_, v| -v }
       arr = arr[0...limit] if limit
-      arr = arr.select { |_, v| v >= min } if min
       Hash[arr]
     else
       scoping { @klass.send(:top, *args, &block) }
