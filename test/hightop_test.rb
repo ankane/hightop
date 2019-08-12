@@ -24,7 +24,7 @@ class HightopTest < Minitest::Test
       "Chicago" => 2
     }
     assert_equal expected, Visit.top(:city, 2)
-    assert_equal expected, Visit.limit(2).top(:city)
+    assert_equal expected, Visit.limit(2).top(:city) unless mongoid?
   end
 
   def test_nil_values
@@ -55,6 +55,8 @@ class HightopTest < Minitest::Test
   end
 
   def test_expressions
+    skip if mongoid?
+
     create_city("San Francisco")
     expected = {
       "san francisco" => 1
@@ -101,8 +103,17 @@ class HightopTest < Minitest::Test
     assert_equal expected, Visit.top(:city, min: 2, distinct: :user_id)
   end
 
+  def test_where
+    create_city("San Francisco")
+    create_city("Chicago")
+    expected = {
+      "San Francisco" => 1
+    }
+    assert_equal expected, Visit.where(city: "San Francisco").top(:city)
+  end
+
   def test_relation_block
-    skip if ActiveRecord::VERSION::MAJOR < 5
+    skip if defined?(ActiveRecord) && ActiveRecord::VERSION::MAJOR < 5
 
     create_city("San Francisco", 3)
     create_city("Chicago", 2)
@@ -122,11 +133,17 @@ class HightopTest < Minitest::Test
     end
   end
 
+  private
+
   def create_city(city, count = 1)
     create({city: city}, count)
   end
 
   def create(attributes, count = 1)
     count.times { Visit.create!(attributes) }
+  end
+
+  def mongoid?
+    defined?(Mongoid)
   end
 end

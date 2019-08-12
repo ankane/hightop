@@ -1,3 +1,7 @@
+## 0.2.2 [unreleased]
+
+- Added support for Mongoid
+
 ## 0.2.1
 
 - Added support for arrays and hashes

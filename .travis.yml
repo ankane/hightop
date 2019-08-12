@@ -7,6 +7,13 @@ env:
   - AR_VERSION=5.1.0
   - AR_VERSION=5.0.0
   - AR_VERSION=4.2.0
+matrix:
+  include:
+    - gemfile: test/gemfiles/mongoid7.gemfile
+      env:
+        - AR_VERSION=none
+      services:
+        - mongodb
 script: bundle exec rake test
 notifications:
   email:

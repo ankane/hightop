@@ -11,11 +11,7 @@ Visit.top(:browser)
 # }
 ```
 
-Also works with arrays and hashes
-
-```ruby
-["up", "up", "down"].top(1)
-```
+Works with Active Record, Mongoid [master], arrays and hashes
 
 [![Build Status](https://travis-ci.org/ankane/hightop.svg?branch=master)](https://travis-ci.org/ankane/hightop)
 
