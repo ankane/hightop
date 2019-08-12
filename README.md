@@ -3,7 +3,12 @@
 A nice shortcut for group count queries
 
 ```ruby
-Visit.top(:browser)
+Visit.top(:city)
+# {
+#   "London" => 100,
+#   "Tokyo" => 50,
+#   "Paris" => 34
+# }
 ```
 
 Also works with arrays and hashes
