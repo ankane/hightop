@@ -3,11 +3,11 @@
 A nice shortcut for group count queries
 
 ```ruby
-Visit.top(:city)
+Visit.top(:browser)
 # {
-#   "London" => 100,
-#   "Tokyo" => 50,
-#   "Paris" => 34
+#   "Chrome"  => 63,
+#   "Safari"  => 50,
+#   "Firefox" => 34
 # }
 ```
 
