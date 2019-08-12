@@ -6,14 +6,6 @@ A nice shortcut for group count queries
 Visit.top(:browser)
 ```
 
-instead of
-
-```ruby
-Visit.group(:browser).where("browser IS NOT NULL").order("count_all DESC, browser").count
-```
-
-Be sure to [sanitize user input](https://rails-sqli.org/) like you must with `group`
-
 Also works with arrays and hashes
 
 ```ruby
@@ -66,6 +58,19 @@ And min count
 
 ```ruby
 Visit.top(:city, min: 10)
+```
+
+## User Input
+
+If passing user input as the column, be sure to sanitize it first [like you must](https://rails-sqli.org/) with `group`.
+
+```ruby
+column = params[:column]
+
+# check against permitted columns
+raise "Unpermitted column" unless ["column_a", "column_b"].include?(column)
+
+User.top(column)
 ```
 
 ## Arrays and Hashes
