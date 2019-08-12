@@ -17,7 +17,7 @@ Also works with arrays and hashes
 ["up", "up", "down"].top(1)
 ```
 
-[![Build Status](https://travis-ci.org/ankane/hightop.svg)](https://travis-ci.org/ankane/hightop)
+[![Build Status](https://travis-ci.org/ankane/hightop.svg?branch=master)](https://travis-ci.org/ankane/hightop)
 
 ## Installation
 
