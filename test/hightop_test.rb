@@ -55,13 +55,16 @@ class HightopTest < Minitest::Test
   end
 
   def test_expressions
-    skip if mongoid?
-
     create_city("San Francisco")
     expected = {
       "san francisco" => 1
     }
-    assert_equal expected, Visit.top(Arel.sql("LOWER(city)"))
+
+    if mongoid?
+      assert_equal expected, Visit.all.project(city: {"$toLower" => "$city"}).top(:city)
+    else
+      assert_equal expected, Visit.top(Arel.sql("LOWER(city)"))
+    end
   end
 
   def test_distinct
