@@ -11,7 +11,7 @@ Visit.top(:browser)
 # }
 ```
 
-Works with Active Record, Mongoid [master], arrays and hashes
+Works with Active Record, Mongoid, arrays and hashes
 
 [![Build Status](https://travis-ci.org/ankane/hightop.svg?branch=master)](https://travis-ci.org/ankane/hightop)
 
