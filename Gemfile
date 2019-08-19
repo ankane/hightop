@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # Specify your gem's dependencies in hightop.gemspec
 gemspec
 
-ar_version = ENV["AR_VERSION"] || "5.2.0"
+ar_version = ENV["AR_VERSION"] || "6.0.0"
 gem "activerecord", "~> #{ar_version}"
 
 unless ar_version >= "5.1"
