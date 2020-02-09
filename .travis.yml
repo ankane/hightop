@@ -1,6 +1,6 @@
-dist: xenial
+dist: bionic
 language: ruby
-rvm: 2.6.3
+rvm: 2.6
 env:
   - AR_VERSION=6.0.0
   - AR_VERSION=5.2.0
