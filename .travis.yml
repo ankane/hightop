@@ -1,17 +1,20 @@
 dist: bionic
 language: ruby
-rvm: 2.6
-env:
-  - AR_VERSION=6.0.0
-  - AR_VERSION=5.2.0
-  - AR_VERSION=5.1.0
-  - AR_VERSION=5.0.0
-  - AR_VERSION=4.2.0
-matrix:
+jobs:
   include:
-    - gemfile: test/gemfiles/mongoid7.gemfile
-      env:
-        - AR_VERSION=none
+    - rvm: 2.7
+      env: AR_VERSION=6.0.0
+    - rvm: 2.6
+      env: AR_VERSION=5.2.0
+    - rvm: 2.5
+      env: AR_VERSION=5.1.0
+    - rvm: 2.4
+      env: AR_VERSION=5.0.0
+    - rvm: 2.4
+      env: AR_VERSION=4.2.0
+    - rvm: 2.7
+      gemfile: test/gemfiles/mongoid7.gemfile
+      env: AR_VERSION=none
       services:
         - mongodb
 script: bundle exec rake test
