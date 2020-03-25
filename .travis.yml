@@ -10,8 +10,6 @@ jobs:
       env: AR_VERSION=5.1.0
     - rvm: 2.4
       env: AR_VERSION=5.0.0
-    - rvm: 2.3
-      env: AR_VERSION=4.2.0
     - rvm: 2.7
       gemfile: test/gemfiles/mongoid7.gemfile
       env: AR_VERSION=none
