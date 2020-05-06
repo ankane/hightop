@@ -47,11 +47,11 @@ class HightopTest < Minitest::Test
   end
 
   def test_multiple_groups
-    create_city("San Francisco")
+    create(city: "San Francisco", user_id: "123")
     expected = {
-      ["San Francisco", "San Francisco"] => 1
+      ["San Francisco", "123"] => 1
     }
-    assert_equal expected, Visit.top([:city, :city])
+    assert_equal expected, Visit.top([:city, :user_id])
   end
 
   def test_expressions
