@@ -1,6 +1,6 @@
 ## 0.2.3 (2020-06-18)
 
-- Dropped support for Rails 4.2 and Ruby 2.3
+- Dropped support for Active Record 4.2 and Ruby 2.3
 - Fixed deprecation warning in Ruby 2.7
 
 ## 0.2.2 (2019-08-12)
