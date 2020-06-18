@@ -1,6 +1,7 @@
 ## 0.2.3 (unreleased)
 
 - Dropped support for Rails 4.2 and Ruby 2.3
+- Fixed deprecation warning in Ruby 2.7
 
 ## 0.2.2 (2019-08-12)
 

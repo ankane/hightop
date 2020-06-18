@@ -115,6 +115,17 @@ class HightopTest < Minitest::Test
     assert_equal expected, Visit.where(city: "San Francisco").top(:city)
   end
 
+  def test_where_options
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 2)
+    create(city: "Chicago", user_id: 1)
+    expected = {
+      "San Francisco" => 2
+    }
+    assert_equal expected, Visit.where(city: "San Francisco").top(:city, distinct: :user_id)
+  end
+
   def test_relation_block
     skip if defined?(ActiveRecord) && ActiveRecord::VERSION::MAJOR < 5
 
