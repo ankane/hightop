@@ -1,4 +1,4 @@
-## 0.2.3 (unreleased)
+## 0.2.3 (2020-06-18)
 
 - Dropped support for Rails 4.2 and Ruby 2.3
 - Fixed deprecation warning in Ruby 2.7
