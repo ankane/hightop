@@ -1,5 +1,4 @@
 require_relative "test_helper"
-require "hightop/enumerable"
 
 class EnumerableTest < Minitest::Test
   def test_array
