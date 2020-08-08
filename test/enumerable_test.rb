@@ -43,10 +43,10 @@ class EnumerableTest < Minitest::Test
       a: "a",
       b: "b",
       c: "b"
-    }.top { |k, v| v.to_sym }
+    }.top { |k, v| "#{v}!" }
     expected = {
-      b: 2,
-      a: 1
+      "b!" => 2,
+      "a!" => 1
     }
     assert_equal expected, top
     assert_equal top.keys, expected.keys
