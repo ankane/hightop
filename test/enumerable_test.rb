@@ -18,12 +18,12 @@ class EnumerableTest < Minitest::Test
       b: "b",
       c: "b"
     }.top
+    # same as methods like tally
     expected = {
       [:a, "a"] => 1,
       [:b, "b"] => 1,
       [:c, "b"] => 1
     }
-    # same as methods like tally
     assert_equal expected, top
     assert_equal top.keys, expected.keys
   end
