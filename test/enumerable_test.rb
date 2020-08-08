@@ -26,6 +26,20 @@ class EnumerableTest < Minitest::Test
     assert_equal top.keys, expected.keys
   end
 
+  def test_hash_no_block
+    top = {
+      a: "a",
+      b: "b",
+      c: "b"
+    }.top
+    expected = {
+      [:a, "a"] => 1,
+      [:b, "b"] => 1,
+      [:c, "b"] => 1
+    }
+    assert_equal expected, top
+  end
+
   def test_limit
     top = [:a, :b, :b].top(1)
     expected = {
