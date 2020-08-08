@@ -37,6 +37,7 @@ class EnumerableTest < Minitest::Test
       [:b, "b"] => 1,
       [:c, "b"] => 1
     }
+    # same as methods like tally
     assert_equal expected, top
   end
 
