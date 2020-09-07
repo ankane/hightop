@@ -5,19 +5,21 @@ module Hightop
     def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
       warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
 
+      columns = column.is_a?(Array) ? column : [column]
+
       distinct ||= uniq
 
       relation = all
 
       # terribly named option
       unless binding.local_variable_get(:nil)
-        (column.is_a?(Array) ? column : [column]).each do |c|
+        columns.each do |c|
           relation = relation.and(c.ne => nil)
         end
       end
 
       ids = {}
-      Array(column).each_with_index do |c, i|
+      columns.each_with_index do |c, i|
         ids["c#{i}"] = "$#{c}"
       end
 
