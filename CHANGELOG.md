@@ -1,4 +1,4 @@
-## 0.2.4 (unreleased)
+## 0.2.4 (2020-09-07)
 
 - Added warning for non-attribute argument
 - Added deprecation warning for `uniq`
