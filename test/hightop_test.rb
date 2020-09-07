@@ -67,6 +67,15 @@ class HightopTest < Minitest::Test
     end
   end
 
+  def test_expressions_no_arel
+    skip if mongoid?
+
+    message = "[hightop] Non-attribute argument: LOWER(city). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
+    assert_output(nil, message) do
+      Visit.top("LOWER(city)")
+    end
+  end
+
   def test_distinct
     create(city: "San Francisco", user_id: 1)
     create(city: "San Francisco", user_id: 1)
