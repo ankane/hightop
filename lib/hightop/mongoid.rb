@@ -3,6 +3,8 @@ module Hightop
     # super helpful article
     # https://maximomussini.com/posts/mongoid-aggregation-dsl/
     def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
+      warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
+
       distinct ||= uniq
 
       relation = all
