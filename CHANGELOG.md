@@ -1,6 +1,7 @@
 ## 0.2.4 (unreleased)
 
 - Added warning for non-attribute argument
+- Added deprecation warning for `uniq`
 
 ## 0.2.3 (2020-06-18)
 
