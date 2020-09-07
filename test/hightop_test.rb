@@ -128,7 +128,7 @@ class HightopTest < Minitest::Test
   def test_uniq_expression_no_arel
     skip if mongoid?
 
-    message = "[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
+    message = "[hightop] uniq is deprecated. Use distinct instead\n[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
     assert_output(nil, message) do
       Visit.top(:city, uniq: "(user_id)")
     end

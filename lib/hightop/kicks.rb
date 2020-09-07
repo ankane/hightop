@@ -1,6 +1,8 @@
 module Hightop
   module Kicks
     def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
+      warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
+
       columns = column.is_a?(Array) ? column : [column]
       columns = columns.map { |c| Utils.resolve_column(self, c) }
 
