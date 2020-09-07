@@ -4,10 +4,10 @@ module Hightop
       warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
 
       columns = column.is_a?(Array) ? column : [column]
-      columns = columns.map { |c| Utils.resolve_column(self, c) }
+      columns.each { |c| Utils.validate_column(c) }
 
       distinct ||= uniq
-      distinct = Utils.resolve_column(self, distinct) if distinct
+      Utils.validate_column(distinct) if distinct
 
       relation = group(columns).order(["1 DESC"] + columns)
       if limit
@@ -17,12 +17,18 @@ module Hightop
       # terribly named option
       unless binding.local_variable_get(:nil)
         columns.each do |c|
+          c = Utils.resolve_column(self, c)
           relation = relation.where("#{c} IS NOT NULL")
         end
       end
 
       if min
-        relation = relation.having("COUNT(#{distinct ? "DISTINCT #{distinct}" : '*'}) >= #{min.to_i}")
+        if distinct
+          d = Utils.resolve_column(self, distinct)
+          relation = relation.having("COUNT(DISTINCT #{d}) >= #{min.to_i}")
+        else
+          relation = relation.having("COUNT(*) >= #{min.to_i}")
+        end
       end
 
       if distinct

@@ -12,8 +12,6 @@ module Hightop
 
       # resolves eagerly
       def resolve_column(relation, column)
-        validate_column(column)
-
         node = relation.send(:relation).send(:arel_columns, [column]).first
         node = Arel::Nodes::SqlLiteral.new(node) if node.is_a?(String)
         relation.connection.visitor.accept(node, Arel::Collectors::SQLString.new).value

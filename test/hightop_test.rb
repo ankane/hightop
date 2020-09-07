@@ -71,9 +71,10 @@ class HightopTest < Minitest::Test
     skip if mongoid?
 
     message = "[hightop] Non-attribute argument: LOWER(city). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    assert_output(nil, message) do
+    _, stderr = capture_io do
       Visit.top("LOWER(city)")
     end
+    assert_match message, stderr
   end
 
   def test_distinct
@@ -100,9 +101,10 @@ class HightopTest < Minitest::Test
     skip if mongoid?
 
     message = "[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    assert_output(nil, message) do
+    _, stderr = capture_io do
       Visit.top(:city, distinct: "(user_id)")
     end
+    assert_match message, stderr
   end
 
   def test_uniq
@@ -129,9 +131,10 @@ class HightopTest < Minitest::Test
     skip if mongoid?
 
     message = "[hightop] uniq is deprecated. Use distinct instead\n[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    assert_output(nil, message) do
+    _, stderr = capture_io do
       Visit.top(:city, uniq: "(user_id)")
     end
+    assert_match message, stderr
   end
 
   def test_min
