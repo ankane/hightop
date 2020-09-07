@@ -9,7 +9,7 @@ module Hightop
       distinct ||= uniq
       Utils.validate_column(distinct) if distinct
 
-      relation = group(columns).order(["1 DESC"] + columns)
+      relation = group(*columns).order("1 DESC", *columns)
       if limit
         relation = relation.limit(limit)
       end
