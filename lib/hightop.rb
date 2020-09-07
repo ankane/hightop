@@ -6,6 +6,7 @@ require "hightop/enumerable"
 require "hightop/version"
 
 ActiveSupport.on_load(:active_record) do
+  require "hightop/utils"
   require "hightop/kicks"
   extend Hightop::Kicks
 end

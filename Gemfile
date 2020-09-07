@@ -9,3 +9,10 @@ gem "activerecord", "~> #{ar_version}"
 unless ar_version >= "5.1"
   gem "sqlite3", "~> 1.3.0"
 end
+
+case ENV["ADAPTER"]
+when "postgresql"
+  gem "pg"
+when "mysql"
+  gem "mysql2"
+end
