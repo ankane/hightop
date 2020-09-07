@@ -54,7 +54,7 @@ class HightopTest < Minitest::Test
     assert_equal expected, Visit.top([:city, :user_id])
   end
 
-  def test_expressions
+  def test_expression
     create_city("San Francisco")
     expected = {
       "san francisco" => 1
@@ -67,7 +67,7 @@ class HightopTest < Minitest::Test
     end
   end
 
-  def test_expressions_no_arel
+  def test_expression_no_arel
     skip if mongoid?
 
     message = "[hightop] Non-attribute argument: LOWER(city). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
@@ -85,6 +85,26 @@ class HightopTest < Minitest::Test
     assert_equal expected, Visit.top(:city, distinct: :user_id)
   end
 
+  def test_distinct_expression
+    skip if mongoid?
+
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
+    expected = {
+      "San Francisco" => 1
+    }
+    assert_equal expected, Visit.top(:city, distinct: Arel.sql("(user_id)"))
+  end
+
+  def test_distinct_expression_no_arel
+    skip if mongoid?
+
+    message = "[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
+    assert_output(nil, message) do
+      Visit.top(:city, distinct: "(user_id)")
+    end
+  end
+
   def test_uniq
     create(city: "San Francisco", user_id: 1)
     create(city: "San Francisco", user_id: 1)
@@ -92,6 +112,26 @@ class HightopTest < Minitest::Test
       "San Francisco" => 1
     }
     assert_equal expected, Visit.top(:city, uniq: :user_id)
+  end
+
+  def test_uniq_expression
+    skip if mongoid?
+
+    create(city: "San Francisco", user_id: 1)
+    create(city: "San Francisco", user_id: 1)
+    expected = {
+      "San Francisco" => 1
+    }
+    assert_equal expected, Visit.top(:city, uniq: Arel.sql("(user_id)"))
+  end
+
+  def test_uniq_expression_no_arel
+    skip if mongoid?
+
+    message = "[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
+    assert_output(nil, message) do
+      Visit.top(:city, uniq: "(user_id)")
+    end
   end
 
   def test_min
