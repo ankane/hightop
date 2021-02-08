@@ -4,10 +4,10 @@ module Hightop
       warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
 
       columns = column.is_a?(Array) ? column : [column]
-      columns.each { |c| Utils.validate_column(c) }
+      columns = columns.map { |c| Utils.validate_column(c) }
 
       distinct ||= uniq
-      Utils.validate_column(distinct) if distinct
+      distinct = Utils.validate_column(distinct) if distinct
 
       relation = group(*columns).order("1 DESC", *columns)
       if limit
