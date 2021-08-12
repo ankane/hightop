@@ -1,6 +1,6 @@
 require_relative "test_helper"
 
-class HightopTest < Minitest::Test
+class ModelTest < Minitest::Test
   def setup
     Visit.delete_all
   end
