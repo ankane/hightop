@@ -107,36 +107,6 @@ class ModelTest < Minitest::Test
     assert_match message, stderr
   end
 
-  def test_uniq
-    create(city: "San Francisco", user_id: 1)
-    create(city: "San Francisco", user_id: 1)
-    expected = {
-      "San Francisco" => 1
-    }
-    assert_equal expected, Visit.top(:city, uniq: :user_id)
-  end
-
-  def test_uniq_expression
-    skip if mongoid?
-
-    create(city: "San Francisco", user_id: 1)
-    create(city: "San Francisco", user_id: 1)
-    expected = {
-      "San Francisco" => 1
-    }
-    assert_equal expected, Visit.top(:city, uniq: Arel.sql("(user_id)"))
-  end
-
-  def test_uniq_expression_no_arel
-    skip if mongoid?
-
-    message = "[hightop] uniq is deprecated. Use distinct instead\n[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    _, stderr = capture_io do
-      Visit.top(:city, uniq: "(user_id)")
-    end
-    assert_match message, stderr
-  end
-
   def test_min
     create_city("San Francisco", 3)
     create_city("Chicago", 2)

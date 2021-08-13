@@ -1,12 +1,9 @@
 module Hightop
   module Kicks
-    def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
-      warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
-
+    def top(column, limit = nil, distinct: nil, min: nil, nil: nil)
       columns = column.is_a?(Array) ? column : [column]
       columns = columns.map { |c| Utils.validate_column(c) }
 
-      distinct ||= uniq
       distinct = Utils.validate_column(distinct) if distinct
 
       relation = group(*columns).order("1 DESC", *columns)

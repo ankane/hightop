@@ -2,12 +2,8 @@ module Hightop
   module Mongoid
     # super helpful article
     # https://maximomussini.com/posts/mongoid-aggregation-dsl/
-    def top(column, limit = nil, distinct: nil, uniq: nil, min: nil, nil: nil)
-      warn "[hightop] uniq is deprecated. Use distinct instead" if uniq
-
+    def top(column, limit = nil, distinct: nil, min: nil, nil: nil)
       columns = column.is_a?(Array) ? column : [column]
-
-      distinct ||= uniq
 
       relation = all
 
