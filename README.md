@@ -61,19 +61,6 @@ And min count
 Visit.top(:city, min: 10)
 ```
 
-## User Input
-
-If passing user input as the column, be sure to sanitize it first [like you must](https://rails-sqli.org/) with `group`.
-
-```ruby
-column = params[:column]
-
-# check against permitted columns
-raise "Unpermitted column" unless ["column_a", "column_b"].include?(column)
-
-User.top(column)
-```
-
 ## Arrays and Hashes
 
 Arrays
@@ -105,6 +92,18 @@ Min count
 ```ruby
 ["up", "up", "down"].top(min: 2)
 ```
+
+## Upgrading
+
+### 0.3.0
+
+Hightop 0.3.0 protects against unsafe input by default. For non-attribute arguments, use:
+
+```ruby
+Visit.top(Arel.sql(known_safe_value))
+```
+
+Also, the `uniq` option has been removed. Use `distinct` instead.
 
 ## History
 

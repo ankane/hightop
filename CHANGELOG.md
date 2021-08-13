@@ -1,4 +1,4 @@
-## 0.3.0 (unreleased)
+## 0.3.0 (2021-08-12)
 
 - Raise `ActiveRecord::UnknownAttributeReference` for non-attribute arguments
 - Raise `ArgumentError` for too many arguments with enumerable
