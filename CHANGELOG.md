@@ -1,5 +1,6 @@
 ## 0.3.0 (unreleased)
 
+- Raise `ActiveRecord::UnknownAttributeReference` for non-attribute arguments
 - Raise `ArgumentError` for too many arguments with enumerable
 - Removed `uniq` option (use `distinct` instead)
 - Dropped support for Active Record < 5.2 and Ruby < 2.6

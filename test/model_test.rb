@@ -70,11 +70,9 @@ class ModelTest < Minitest::Test
   def test_expression_no_arel
     skip if mongoid?
 
-    message = "[hightop] Non-attribute argument: LOWER(city). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    _, stderr = capture_io do
+    assert_raises(ActiveRecord::UnknownAttributeReference) do
       Visit.top("LOWER(city)")
     end
-    assert_match message, stderr
   end
 
   def test_distinct
@@ -100,11 +98,9 @@ class ModelTest < Minitest::Test
   def test_distinct_expression_no_arel
     skip if mongoid?
 
-    message = "[hightop] Non-attribute argument: (user_id). Use Arel.sql() for known-safe values. This will raise an error in Hightop 0.3.0\n"
-    _, stderr = capture_io do
+    assert_raises(ActiveRecord::UnknownAttributeReference) do
       Visit.top(:city, distinct: "(user_id)")
     end
-    assert_match message, stderr
   end
 
   def test_min
