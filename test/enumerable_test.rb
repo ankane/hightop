@@ -108,4 +108,10 @@ class EnumerableTest < Minitest::Test
     }
     assert_equal expected, top
   end
+
+  def test_too_many_arguments
+    assert_raises(ArgumentError) do
+      [].top(1, 2)
+    end
+  end
 end

@@ -1,7 +1,8 @@
 module Enumerable
   def top(*args, **options, &block)
     if block || !(respond_to?(:scoping) || respond_to?(:with_scope))
-      # TODO raise error if too many arguments
+      raise ArgumentError, "wrong number of arguments (given 2, expected 0..1)" if args.size > 1
+
       limit = args[0]
       min = options[:min]
 
