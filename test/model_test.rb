@@ -75,6 +75,27 @@ class ModelTest < Minitest::Test
     end
   end
 
+  def test_expression_multiple
+    create_city("San Francisco")
+    expected = {
+      ["san francisco", "SAN FRANCISCO"] => 1
+    }
+
+    if mongoid?
+      assert_equal expected, Visit.all.project(lower_city: {"$toLower" => "$city"}, upper_city: {"$toUpper" => "$city"}).top([:lower_city, :upper_city])
+    else
+      assert_equal expected, Visit.top([Arel.sql("LOWER(city)"), Arel.sql("UPPER(city)")])
+    end
+  end
+
+  def test_expression_multiple_no_arel
+    skip if mongoid?
+
+    assert_raises(ActiveRecord::UnknownAttributeReference) do
+      Visit.top([Arel.sql("LOWER(city)"), "UPPER(city)"])
+    end
+  end
+
   def test_distinct
     create(city: "San Francisco", user_id: 1)
     create(city: "San Francisco", user_id: 1)
