@@ -14,5 +14,5 @@ when "postgresql"
 when "mysql"
   gem "mysql2"
 else
-  gem "sqlite3", (ar_version >= "5.1" ? nil : "~> 1.3.0")
+  gem "sqlite3"
 end
