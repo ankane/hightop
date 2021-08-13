@@ -2,6 +2,7 @@ require "active_record"
 
 # for debugging
 ActiveRecord::Base.logger = $logger
+ActiveRecord::Migration.verbose = ENV["VERBOSE"]
 
 # migrations
 case ENV["ADAPTER"]
