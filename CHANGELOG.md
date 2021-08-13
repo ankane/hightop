@@ -1,3 +1,7 @@
+## 0.3.0 (unreleased)
+
+- Dropped support for Active Record < 5.2 and Ruby < 2.6
+
 ## 0.2.4 (2020-09-07)
 
 - Added warning for non-attribute argument

@@ -12,10 +12,6 @@ jobs:
           ar_version: 6.0.0
         - ruby: 2.6
           ar_version: 5.2.0
-        - ruby: 2.5
-          ar_version: 5.1.0
-        - ruby: 2.4
-          ar_version: 5.0.0
         - ruby: 2.7
           gemfile: gemfiles/mongoid7.gemfile
           mongodb: true
