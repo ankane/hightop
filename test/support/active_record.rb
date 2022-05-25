@@ -14,9 +14,11 @@ else
   ActiveRecord::Base.establish_connection adapter: "sqlite3", database: ":memory:"
 end
 
-ActiveRecord::Migration.create_table :visits, force: true do |t|
-  t.string :city
-  t.string :user_id
+ActiveRecord::Schema.define do
+  create_table :visits, force: true do |t|
+    t.string :city
+    t.string :user_id
+  end
 end
 
 class Visit < ActiveRecord::Base
