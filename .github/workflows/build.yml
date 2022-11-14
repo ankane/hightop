@@ -28,7 +28,7 @@ jobs:
       AR_VERSION: ${{ matrix.ar_version || 'none' }}
       BUNDLE_GEMFILE: ${{ matrix.gemfile || 'Gemfile' }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
