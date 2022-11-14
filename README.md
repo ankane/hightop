@@ -20,7 +20,7 @@ Works with Active Record, Mongoid, arrays and hashes
 Add this line to your application’s Gemfile:
 
 ```ruby
-gem 'hightop'
+gem "hightop"
 ```
 
 ## Options
