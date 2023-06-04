@@ -2,16 +2,16 @@
 require "active_support"
 
 # modules
-require "hightop/enumerable"
-require "hightop/version"
+require_relative "hightop/enumerable"
+require_relative "hightop/version"
 
 ActiveSupport.on_load(:active_record) do
-  require "hightop/utils"
-  require "hightop/kicks"
+  require_relative "hightop/utils"
+  require_relative "hightop/kicks"
   extend Hightop::Kicks
 end
 
 ActiveSupport.on_load(:mongoid) do
-  require "hightop/mongoid"
+  require_relative "hightop/mongoid"
   Mongoid::Document::ClassMethods.include(Hightop::Mongoid)
 end
