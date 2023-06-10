@@ -1,7 +1,7 @@
 ## 0.4.0 (unreleased)
 
 - Dropped support for Active Record < 6.1 and Ruby < 3
-- Dropped support for Mongoid 6
+- Dropped support for Mongoid < 7
 
 ## 0.3.0 (2021-08-12)
 
