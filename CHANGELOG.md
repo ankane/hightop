@@ -1,4 +1,4 @@
-## 0.4.0 (unreleased)
+## 0.4.0 (2023-07-02)
 
 - Dropped support for Active Record < 6.1 and Ruby < 3
 - Dropped support for Mongoid < 7
