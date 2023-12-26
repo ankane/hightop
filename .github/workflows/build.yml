@@ -6,8 +6,10 @@ jobs:
       fail-fast: false
       matrix:
         include:
+          - ruby: 3.3
+            ar_version: 7.1.0
           - ruby: 3.2
-            ar_version: 7.0.0
+            ar_version: 7.1.0
           - ruby: 3.1
             ar_version: 7.0.0
           - ruby: "3.0"
@@ -23,7 +25,7 @@ jobs:
       AR_VERSION: ${{ matrix.ar_version || 'none' }}
       BUNDLE_GEMFILE: ${{ matrix.gemfile || 'Gemfile' }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
