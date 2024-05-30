@@ -14,5 +14,5 @@ when "postgresql"
 when "mysql"
   gem "mysql2"
 else
-  gem "sqlite3"
+  gem "sqlite3", "< 2"
 end
