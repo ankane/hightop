@@ -17,7 +17,7 @@ module Enumerable
       arr = arr[0...limit] if limit
       Hash[arr]
     elsif respond_to?(:scoping)
-      scoping { @klass.send(:top, *args, **options, &block) }
+      scoping { klass.send(:top, *args, **options, &block) }
     else
       with_scope(self) { klass.send(:top, *args, **options, &block) }
     end
