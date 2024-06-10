@@ -93,18 +93,6 @@ Min count
 ["up", "up", "down"].top(min: 2)
 ```
 
-## Upgrading
-
-### 0.3.0
-
-Hightop 0.3.0 protects against unsafe input by default. For non-attribute arguments, use:
-
-```ruby
-Visit.top(Arel.sql(known_safe_value))
-```
-
-Also, the `uniq` option has been removed. Use `distinct` instead.
-
 ## History
 
 View the [changelog](https://github.com/ankane/hightop/blob/master/CHANGELOG.md)
