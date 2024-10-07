@@ -14,5 +14,5 @@ when "postgresql"
 when "mysql"
   gem "mysql2"
 else
-  gem "sqlite3", "< 2"
+  gem "sqlite3", ENV["AR_VERSION"].to_f <= 7.1 ? "< 2" : nil
 end
