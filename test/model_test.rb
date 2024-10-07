@@ -184,6 +184,17 @@ class ModelTest < Minitest::Test
     end
   end
 
+  def test_connection_leasing
+    skip if mongoid?
+
+    ActiveRecord::Base.connection_handler.clear_active_connections!
+    assert_nil ActiveRecord::Base.connection_pool.active_connection?
+    ActiveRecord::Base.connection_pool.with_connection do
+      Visit.top(:city)
+    end
+    assert_nil ActiveRecord::Base.connection_pool.active_connection?
+  end
+
   private
 
   def create_city(city, count = 1)
