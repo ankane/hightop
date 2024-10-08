@@ -1,4 +1,4 @@
-## 0.5.0 (unreleased)
+## 0.5.0 (2024-10-07)
 
 - Fixed connection leasing for Active Record 7.2+
 - Dropped support for Active Record < 7 and Ruby < 3.1
