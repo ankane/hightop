@@ -6,8 +6,8 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - ruby: 3.3
-            ar_version: 8.0.0.beta1
+          - ruby: 3.4
+            ar_version: 8.0.0
           - ruby: 3.3
             ar_version: 7.2.0
           - ruby: 3.2
