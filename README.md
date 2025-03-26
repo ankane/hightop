@@ -14,6 +14,7 @@ Visit.top(:browser)
 Works with Active Record, Mongoid, arrays and hashes
 
 [![Build Status](https://github.com/ankane/hightop/actions/workflows/build.yml/badge.svg)](https://github.com/ankane/hightop/actions)
+[![libs.tech recommends](https://libs.tech/project/19680171/badge.svg)](https://libs.tech/project/19680171/hightop)
 
 ## Installation
 
