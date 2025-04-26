@@ -16,5 +16,6 @@ when "mysql"
 when "trilogy"
   gem "trilogy"
 else
-  gem "sqlite3"
+  gem "sqlite3", platform: :ruby
+  gem "sqlite3-ffi", platform: :jruby
 end
