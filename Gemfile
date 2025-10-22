@@ -3,7 +3,7 @@ source "https://rubygems.org"
 gemspec
 
 gem "rake"
-gem "minitest", ">= 5"
+gem "minitest"
 
 ar_version = ENV["AR_VERSION"] || "8.0.0"
 gem "activerecord", "~> #{ar_version}"
