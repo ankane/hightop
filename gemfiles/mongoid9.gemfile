@@ -5,4 +5,3 @@ gemspec path: ".."
 gem "rake"
 gem "minitest"
 gem "mongoid", "~> 9"
-gem "ostruct" # for mongoid
